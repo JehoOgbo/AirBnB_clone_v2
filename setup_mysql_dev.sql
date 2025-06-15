@@ -1,3 +1,4 @@
+-- Create database, user and grant permissions to the user
 CREATE DATABASE
 IF NOT EXISTS hbnb_dev_db;
 CREATE USER IF NOT EXISTS 'hbnb_dev'@'localhost'
