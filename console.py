@@ -139,6 +139,7 @@ class HBNBCommand(cmd.Cmd):
                 attrs = result[i].split('=')
                 setattr(new_instance, attrs[0], attrs[1].strip('"'))
                 i += 1
+            storage.save()
             return
         new_instance = HBNBCommand.classes[args]()
         storage.save()
