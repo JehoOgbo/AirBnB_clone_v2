@@ -1,8 +1,19 @@
 #!/usr/bin/python3
 """ State Module for HBNB project """
-from models.base_model import BaseModel
+from models.base_model import BaseModel, Base
+from sqlalchemy import Column, String
+from sqlalchemy.orm import relationship
 
 
-class State(BaseModel):
+class State(BaseModel, Base):
     """ State class """
-    name = ""
+    __tablename__ = 'states'
+    name = Column(String(128), nullable=False)
+    state = relationship("City", backref='State')
+
+    @property
+    def cities(self):
+        """ returns the list of City instances with
+        state_id equals to the current State.id"""
+        from models.city import City
+        return len(storage.all(City))
