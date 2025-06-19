@@ -3,7 +3,10 @@
 from models.base_model import BaseModel, Base
 from sqlalchemy import Column, String, ForeignKey
 from sqlalchemy.orm import relationship
-from models.__init__ import env
+from os import getenv
+
+
+env = getenv("HBNB_TYPE_STORAGE")
 
 
 class City(BaseModel, Base):
