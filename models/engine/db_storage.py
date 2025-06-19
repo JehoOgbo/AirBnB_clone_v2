@@ -7,14 +7,12 @@ from sqlalchemy import create_engine, Table, select
 from models.state import State
 from models.city import City
 from models.base_model import Base
+from models.user import User
 
 
 class DBStorage:
     __engine = None
     __session = None
-    diction = {"State": State, "cities": City}
-    #           "Place": Place, "Review": Review,
-    #           "State": State, "User": User}
 
     def __init__(self):
         """initialize the class"""
@@ -33,7 +31,7 @@ class DBStorage:
 
     def all(self, cls=None):
         """ query all on the current database session """
-        classes = {"City": City, "State": State}
+        classes = {"City": City, "State": State, "User": User}
         new_dict = {}
         for clss in classes:
             if cls is None or cls is classes[clss] or cls is clss:
