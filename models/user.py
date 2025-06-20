@@ -16,6 +16,7 @@ if env == 'db':
         password = Column(String(128), nullable=False)
         first_name = Column(String(128), nullable=True)
         last_name = Column(String(128), nullable=True)
+        places = relationship("Place", backref='user')
 else:
     class User(BaseModel):
         """ This class defines a user for filestorge"""

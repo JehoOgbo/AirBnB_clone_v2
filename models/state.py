@@ -14,7 +14,7 @@ if env == 'db':
         """ State class """
         __tablename__ = 'states'
         name = Column(String(128), nullable=False)
-        state = relationship("City", backref='State')
+        cities = relationship("City", backref='state')
 
         @property
         def cities(self):
