@@ -8,16 +8,17 @@ from os import getenv
 
 env = getenv('HBNB_TYPE_STORAGE')
 
-
-class User(BaseModel, Base):
-    """This class defines a user by various attributes"""
-    if env == 'db':
+if env == 'db':
+    class User(BaseModel, Base):
+        """This class defines a user by various attributes"""
         __tablename__ = "users"
         email = Column(String(128), nullable=False)
         password = Column(String(128), nullable=False)
         first_name = Column(String(128), nullable=False)
         last_name = Column(String(128), nullable=False)
-    else:
+else:
+    class User(BaseModel):
+        """ This class defines a user for filestorge"""
         email = ""
         password = ""
         first_name = ""

@@ -8,6 +8,7 @@ from models.state import State
 from models.city import City
 from models.base_model import Base
 from models.user import User
+from models.place import Place
 
 
 class DBStorage:
@@ -31,14 +32,13 @@ class DBStorage:
 
     def all(self, cls=None):
         """ query all on the current database session """
-        classes = {"City": City, "State": State, "User": User}
+        classes = {"City": City, "State": State, "User": User, "Place": Place}
         new_dict = {}
         for clss in classes:
             if cls is None or cls is classes[clss] or cls is clss:
                 objs = self.__session.query(classes[clss]).all()
                 for obj in objs:
                     key = obj.__class__.__name__ + '.' + obj.id
-                    delattr(obj, '_sa_instance_state')
                     new_dict[key] = obj
                     
         return (new_dict)
@@ -55,7 +55,7 @@ class DBStorage:
         """delete from the current database session obj if not none"""
         if obj is None:
             pass
-        session.delete(obj)
+        self.__session.delete(obj)
 
     def reload(self):
         """
