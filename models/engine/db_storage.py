@@ -9,6 +9,7 @@ from models.city import City
 from models.base_model import Base
 from models.user import User
 from models.place import Place
+from models.review import Review
 
 
 class DBStorage:
@@ -23,7 +24,7 @@ class DBStorage:
         db = getenv('HBNB_MYSQL_DB')
 
         url = 'mysql+mysqldb://{}:{}@{}:3306/{}'.format(user,
-                password, host, db)
+                                                        password, host, db)
         self.__engine = create_engine(url, pool_pre_ping=True)
         env = getenv('HBNB_ENV')
         if env == 'test':
@@ -32,7 +33,8 @@ class DBStorage:
 
     def all(self, cls=None):
         """ query all on the current database session """
-        classes = {"City": City, "State": State, "User": User, "Place": Place}
+        classes = {"City": City, "State": State,
+                "User": User, "Place": Place, "Review": Review}
         new_dict = {}
         for clss in classes:
             if cls is None or cls is classes[clss] or cls is clss:
@@ -40,7 +42,6 @@ class DBStorage:
                 for obj in objs:
                     key = obj.__class__.__name__ + '.' + obj.id
                     new_dict[key] = obj
-                    
         return (new_dict)
 
     def new(self, obj):
