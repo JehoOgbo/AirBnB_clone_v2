@@ -136,7 +136,8 @@ class HBNBCommand(cmd.Cmd):
             i = 1
             while i < length:
                 attrs = result[i].split('=')
-                setattr(new_instance, attrs[0], attrs[1].strip('"'))
+                abba = attrs[1].replace("_", " ")
+                setattr(new_instance, attrs[0], abba.strip('"'))
                 i += 1
             storage.new(new_instance)
             storage.save()
@@ -207,9 +208,7 @@ class HBNBCommand(cmd.Cmd):
         key = c_name + "." + c_id
 
         try:
-            #del(storage.all()[key])
-            new = storage.all()
-            storage.delete(new[key])
+            del(storage.all()[key])
             storage.save()
         except KeyError:
             print("** no instance found **")
