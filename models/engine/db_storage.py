@@ -10,6 +10,7 @@ from models.base_model import Base
 from models.user import User
 from models.place import Place
 from models.review import Review
+from models.amenity import Amenity
 
 
 class DBStorage:
@@ -34,7 +35,8 @@ class DBStorage:
     def all(self, cls=None):
         """ query all on the current database session """
         classes = {"City": City, "State": State,
-                "User": User, "Place": Place, "Review": Review}
+                "User": User, "Place": Place, "Review": Review,
+                "Amenity": Amenity}
         new_dict = {}
         for clss in classes:
             if cls is None or cls is classes[clss] or cls is clss:
