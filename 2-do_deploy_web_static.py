@@ -4,6 +4,8 @@ Fabric script (based on the file 1-pack_web_static.py)
 that distributes an archive to your web servers,
 using the function do_deploy
 """
+
+
 from fabric.api import *
 import time
 env.hosts = ['142.44.167.228', '144.217.246.195']
@@ -12,14 +14,14 @@ env.hosts = ['142.44.167.228', '144.217.246.195']
 def do_deploy(archive_path):
     """function that distributes the archive""" 
     try:
-        # get the filename
-        # split using '/' and the last item is the filename
+        """ get the filename"""
+        """split using '/' and the last item is the filename"""
         filename = archive_path.split("/")[-1]
 
-        # get the filename without the extension
+        """get the filename without the extension"""
         no_ext = filename.split(".")[0]
 
-        # path is name of folder to uncompress the archive to
+        """path is name of folder to uncompress the archive to"""
         path = "/data/web_static/releases/"
 
         put(archive_path, '/tmp/')
