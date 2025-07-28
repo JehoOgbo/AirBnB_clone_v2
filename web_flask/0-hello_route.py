@@ -1,4 +1,5 @@
 #!/usr/bin/python3
+""" basic flask web app """
 from flask import Flask
 
 
