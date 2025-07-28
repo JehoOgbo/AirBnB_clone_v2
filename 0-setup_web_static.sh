@@ -22,7 +22,7 @@ ALX
 </html>" > /data/web_static/releases/test/index.html
 mkdir /localhost/
 mkdir /localhost/hbnb_static
-ln -sf data/web_static/releases/test/ /data/web_static/current
+ln -sf /data/web_static/releases/test/ /data/web_static/current
 chown -R ubuntu /data/
 chgrp -R ubuntu /data/
 sed -i '/^\tserver_name/ a\\tlocation /hbnb_static \{\n\t\talias /data/web_static/current;\n\t\}\n' /etc/nginx/sites-available/default

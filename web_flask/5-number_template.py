@@ -1,4 +1,5 @@
 #!/usr/bin/python3
+""" basic flask web app """
 from flask import Flask, render_template
 from markupsafe import escape
 
