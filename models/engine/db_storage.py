@@ -2,7 +2,7 @@
 """Store the information in a database"""
 from os import getenv
 from sys import argv
-from sqlalchemy.orm import sessionmaker
+from sqlalchemy.orm import sessionmaker, scoped_session
 from sqlalchemy import create_engine, Table, select
 from models.state import State
 from models.city import City
