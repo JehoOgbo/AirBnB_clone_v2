@@ -35,8 +35,8 @@ class DBStorage:
     def all(self, cls=None):
         """ query all on the current database session """
         classes = {"City": City, "State": State,
-                "User": User, "Place": Place, "Review": Review,
-                "Amenity": Amenity}
+                   "User": User, "Place": Place, "Review": Review,
+                   "Amenity": Amenity}
         new_dict = {}
         for clss in classes:
             if cls is None or cls is classes[clss] or cls is clss:
