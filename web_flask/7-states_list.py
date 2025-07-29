@@ -1,7 +1,6 @@
 #!/usr/bin/python3
-"""starts a web app for airbnb_clone"""
-
-from flask import Flask
+""" starts a web app for airbnb_clone """
+from flask import Flask, render_template
 from models import storage
 
 
