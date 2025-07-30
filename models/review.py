@@ -12,6 +12,9 @@ if env == 'db':
     class Review(BaseModel, Base):
         """ Review class to store review info """
         __tablename__ = 'reviews'
+        id = BaseModel.id
+        created_at = BaseModel.created_at
+        updated_at = BaseModel.updated_at
         text = Column(String(1024), nullable=False)
         place_id = Column(String(60), ForeignKey("places.id"), nullable=False)
         user_id = Column(String(60), ForeignKey("users.id"), nullable=False)

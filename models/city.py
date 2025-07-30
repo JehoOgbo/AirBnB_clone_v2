@@ -13,6 +13,9 @@ if env == "db":
     class City(BaseModel, Base):
         """ The city class, contains state ID and name """
         __tablename__ = "cities"
+        id = BaseModel.id
+        created_at = BaseModel.created_at
+        updated_at = BaseModel.updated_at
         name = Column(String(128), nullable=False)
         state_id = Column(String(60), ForeignKey("states.id"), nullable=False)
         places = relationship("Place", backref="cities")

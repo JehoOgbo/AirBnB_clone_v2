@@ -12,6 +12,9 @@ if env == 'db':
     class User(BaseModel, Base):
         """This class defines a user by various attributes"""
         __tablename__ = "users"
+        id = BaseModel.id
+        created_at = BaseModel.created_at
+        updated_at = BaseModel.updated_at
         email = Column(String(128), nullable=False)
         password = Column(String(128), nullable=False)
         first_name = Column(String(128), nullable=True)
