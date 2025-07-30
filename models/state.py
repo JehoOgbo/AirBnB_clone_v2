@@ -3,6 +3,7 @@
 from models.base_model import BaseModel, Base
 from sqlalchemy import Column, String
 from sqlalchemy.orm import relationship
+from sqlalchemy.ext.declarative import declared_attr
 from os import getenv
 
 
@@ -13,8 +14,13 @@ if env == 'db':
     class State(BaseModel, Base):
         """ State class """
         __tablename__ = 'states'
+        id = BaseModel.id
+        created_at = BaseModel.created_at
+        updated_at = BaseModel.updated_at
         name = Column(String(128), nullable=False)
         cities = relationship("City", backref='state')
+
+
 else:
     class State(BaseModel):
         """State class """
